@@ -89,6 +89,15 @@ class CategoriesPost extends BaseModel{
 	}
 }
 
+class PostLikes extends BaseModel{
+	constructor(){
+		super();
+
+		this.addField('userId', inn.relation.foreignkey(inn.User));
+		this.addField('postId', inn.relation.foreignkey(inn.Post));
+    this.addField('createdAt', inn.DATETIME);
+	}
+}
 module.exports = {
   Blog,
   Post,
@@ -98,4 +107,5 @@ module.exports = {
 	Comments,
 	Categories,
 	CategoriesPost,
+	PostLikes,
 }
