@@ -51,9 +51,20 @@ class Roles extends BaseModel{
 	}
 }
 
+class UserRoles extends BaseModel{
+	constructor(){
+		super();
+
+		this.addField('userId', inn.relation.foreignkey(inn.User));
+		this.addField('roleId', inn.relation.foreignkey(inn.Roles));
+	}
+}
+
+
 module.exports = {
   Blog,
   Post,
 	User,
 	Roles,
+	UserRoles,
 }
