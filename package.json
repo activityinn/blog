@@ -1,0 +1,27 @@
+{
+  "name": "activityinn-blog",
+  "version": "0.1.0",
+  "description": "A demo project to demonstrate activity inn's projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/activityinn/blog.git"
+  },
+  "keywords": [
+    "ActivityPub",
+    "Blog",
+    "ActivityInn"
+  ],
+  "author": "Sajjad Heydari <MCSHEMAIL@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/activityinn/blog/issues"
+  },
+  "homepage": "https://github.com/activityinn/blog#readme",
+  "dependencies": {
+    "activityinn": "^0.1.0"
+  }
+}
