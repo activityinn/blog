@@ -60,6 +60,16 @@ class UserRoles extends BaseModel{
 	}
 }
 
+class Comments extends BaseModel{
+	constructor(){
+		super();
+
+		this.addField('userId', inn.relation.foreignkey(inn.User));
+		this.addField('postId', inn.relation.foreignkey(inn.Post));
+		this.addField('text', inn.STRING(1024));
+	}
+}
+
 
 module.exports = {
   Blog,
@@ -67,4 +77,5 @@ module.exports = {
 	User,
 	Roles,
 	UserRoles,
+	Comments,
 }
