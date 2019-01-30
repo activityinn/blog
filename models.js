@@ -42,8 +42,18 @@ class User extends BaseModel{
 	}
 }
 
+class Roles extends BaseModel{
+	constructor(){
+		super();
+
+		this.addField('name', inn.STRING(64));
+		this.addField('desctiption', inn.STRING(128));
+	}
+}
+
 module.exports = {
   Blog,
   Post,
 	User,
+	Roles,
 }
