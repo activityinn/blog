@@ -71,6 +71,16 @@ class Comments extends BaseModel{
 }
 
 
+class Categories extends BaseModel{
+	constructor(){
+		super();
+
+		this.addField('type', inn.STRING(64));
+		this.addField('desctiption', inn.STRING(128));
+	}
+}
+
+
 module.exports = {
   Blog,
   Post,
@@ -78,4 +88,5 @@ module.exports = {
 	Roles,
 	UserRoles,
 	Comments,
+	Categories,
 }
