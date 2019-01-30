@@ -31,7 +31,19 @@ class Post extends BaseModel{
   }
 };
 
+class User extends BaseModel{
+	constructor(){
+		super();
+
+		this.addField('firstName', inn.STRING(64));
+		this.addField('lastName', inn.STRING(64));
+		this.addField('email', inn.STRING(64));
+		this.addField('password', inn.STRING(128));
+	}
+}
+
 module.exports = {
   Blog,
   Post,
+	User,
 }
