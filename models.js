@@ -27,51 +27,31 @@ class Post extends BaseModel{
 
     this.addField('blog', models.relation.foreignkey(Blog));
 
+		this.addField('comment', models.relation.foreignkey(Comment)); 
+
     this.setBaseName('post');
   }
 };
 
-class User extends BaseModel{
+class Comment extends BaseModel{
   constructor(){
     super();
 
-    this.addField('firstName', models.STRING(64));
-    this.addField('lastName', models.STRING(64));
-    this.addField('email', models.STRING(64));
-    this.addField('password', models.STRING(128));
-  }
-}
+    this.addField('userId', models.relation.foreignkey(models.Actor));
 
-class Roles extends BaseModel{
-  constructor(){
-    super();
-
-    this.addField('name', models.STRING(64));
-    this.addField('desctiption', models.STRING(128));
-  }
-}
-
-class UserRoles extends BaseModel{
-  constructor(){
-    super();
-
-    this.addField('userId', models.relation.foreignkey(models.User));
-    this.addField('roleId', models.relation.foreignkey(models.Roles));
-  }
-}
-
-class Comments extends BaseModel{
-  constructor(){
-    super();
-
-    this.addField('userId', models.relation.foreignkey(models.User));
-    this.addField('postId', models.relation.foreignkey(models.Post));
-    this.addField('text', models.STRING(1024));
+		// TODO:
+		// comment can be made under a post or under another comment.
+		// Moreover, commets can be handled like a mastodon toot.
+		// Needs to be strudied further.
+    this.addField('postId', models.relation.foreignkey(Post));
+		
+		// TODO: decide about length of comment
+		this.addField('text', models.STRING(1024));
   }
 }
 
 
-class Categories extends BaseModel{
+class Category extends BaseModel{
   constructor(){
     super();
 
@@ -80,21 +60,25 @@ class Categories extends BaseModel{
   }
 }
 
-class CategoriesPost extends BaseModel{
+class CategoryPost extends BaseModel{
   constructor(){
     super();
 
-    this.addField('categoryId', models.relation.foreignkey(models.Categories));
-    this.addField('postId', models.relation.foreignkey(models.Post));
+    this.addField('categoryId', models.relation.foreignkey(Category));
+    this.addField('postId', models.relation.foreignkey(Post));
   }
 }
 
-class PostLikes extends BaseModel{
+class PostLike extends BaseModel{
   constructor(){
     super();
 
-    this.addField('userId', models.relation.foreignkey(models.User));
-    this.addField('postId', models.relation.foreignkey(models.Post));
+		// TODO:
+		// Liking a post would be completely similar to liking a Mastodon toot.
+		// Needs to be studied further
+
+    this.addField('userId', models.relation.foreignkey(models.Actor));
+    this.addField('postId', models.relation.foreignkey(Post));
     this.addField('createdAt', models.DATETIME);
   }
 }
@@ -102,11 +86,8 @@ class PostLikes extends BaseModel{
 module.exports = {
   Blog,
   Post,
-  User,
-  Roles,
-  UserRoles,
-  Comments,
-  Categories,
-  CategoriesPost,
-  PostLikes,
+  Comment,
+  Category,
+  CategoryPost,
+  PostLike,
 }
