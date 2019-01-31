@@ -35,10 +35,10 @@ class User extends BaseModel{
   constructor(){
     super();
 
-    this.addField('firstName', inn.STRING(64));
-    this.addField('lastName', inn.STRING(64));
-    this.addField('email', inn.STRING(64));
-    this.addField('password', inn.STRING(128));
+    this.addField('firstName', models.STRING(64));
+    this.addField('lastName', models.STRING(64));
+    this.addField('email', models.STRING(64));
+    this.addField('password', models.STRING(128));
   }
 }
 
@@ -46,8 +46,8 @@ class Roles extends BaseModel{
   constructor(){
     super();
 
-    this.addField('name', inn.STRING(64));
-    this.addField('desctiption', inn.STRING(128));
+    this.addField('name', models.STRING(64));
+    this.addField('desctiption', models.STRING(128));
   }
 }
 
@@ -55,8 +55,8 @@ class UserRoles extends BaseModel{
   constructor(){
     super();
 
-    this.addField('userId', inn.relation.foreignkey(inn.User));
-    this.addField('roleId', inn.relation.foreignkey(inn.Roles));
+    this.addField('userId', models.relation.foreignkey(models.User));
+    this.addField('roleId', models.relation.foreignkey(models.Roles));
   }
 }
 
@@ -64,9 +64,9 @@ class Comments extends BaseModel{
   constructor(){
     super();
 
-    this.addField('userId', inn.relation.foreignkey(inn.User));
-    this.addField('postId', inn.relation.foreignkey(inn.Post));
-    this.addField('text', inn.STRING(1024));
+    this.addField('userId', models.relation.foreignkey(models.User));
+    this.addField('postId', models.relation.foreignkey(models.Post));
+    this.addField('text', models.STRING(1024));
   }
 }
 
@@ -75,8 +75,8 @@ class Categories extends BaseModel{
   constructor(){
     super();
 
-    this.addField('type', inn.STRING(64));
-    this.addField('desctiption', inn.STRING(128));
+    this.addField('type', models.STRING(64));
+    this.addField('desctiption', models.STRING(128));
   }
 }
 
@@ -84,8 +84,8 @@ class CategoriesPost extends BaseModel{
   constructor(){
     super();
 
-    this.addField('categoryId', inn.relation.foreignkey(inn.Categories));
-    this.addField('postId', inn.relation.foreignkey(inn.Post));
+    this.addField('categoryId', models.relation.foreignkey(models.Categories));
+    this.addField('postId', models.relation.foreignkey(models.Post));
   }
 }
 
@@ -93,11 +93,12 @@ class PostLikes extends BaseModel{
   constructor(){
     super();
 
-    this.addField('userId', inn.relation.foreignkey(inn.User));
-    this.addField('postId', inn.relation.foreignkey(inn.Post));
-    this.addField('createdAt', inn.DATETIME);
+    this.addField('userId', models.relation.foreignkey(models.User));
+    this.addField('postId', models.relation.foreignkey(models.Post));
+    this.addField('createdAt', models.DATETIME);
   }
 }
+
 module.exports = {
   Blog,
   Post,
