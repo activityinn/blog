@@ -1,9 +1,10 @@
-const BaseModel = require('activityinn').BaseModel;
+const models = require('activityinn').models;
+const BaseModel = models.BaseModel;
 
 class Blog extends BaseModel{
   constructor(){
-    this.addField('title', inn.STRING(128));
-    this.addField('master', inn.relation.foreignkey(inn.Actor))
+    this.addField('title', models.STRING(128));
+    this.addField('master', models.relation.foreignkey(models.Actor))
     super();
   }
 }
@@ -12,19 +13,19 @@ class Post extends BaseModel{
   constructor(){
     super();
 
-    this.addField('title', inn.STRING(128));
+    this.addField('title', models.STRING(128));
 
-    this.addField('actor', inn.relation.foreignkey(inn.Actor));
+    this.addField('actor', models.relation.foreignkey(models.Actor));
 
-    this.addField('body', inn.TEXT);
+    this.addField('body', models.TEXT);
 
-    this.addField('createdAt', inn.DATETIME);
-    this.addField('updatedAt', inn.DATETIME);
+    this.addField('createdAt', models.DATETIME);
+    this.addField('updatedAt', models.DATETIME);
 
-    this.addField('views', inn.NUMBER);
-    this.addField('published', inn.BOOLEAN);
+    this.addField('views', models.NUMBER);
+    this.addField('published', models.BOOLEAN);
 
-    this.addField('blog', inn.relation.foreignkey(Blog));
+    this.addField('blog', models.relation.foreignkey(Blog));
 
     this.setBaseName('post');
   }
