@@ -1,4 +1,4 @@
-const Inn = reqruire('activityinn');
+const Inn = require('activityinn');
 
 const inn = new Inn({
   host: 'example.com',
